@@ -352,7 +352,7 @@
     
     <!-- Background Music - Ed Sheeran Perfect -->
     <audio id="bgMusic" loop>
-        <source src="source.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_17d2c6b93e.mp3" type="audio/mpeg">
     </audio>
     
     <!-- Music Control Button -->
@@ -484,6 +484,31 @@
             }
         }
 
+        function sendEmail() {
+            const subject = "Upon Thy Insistence, My Dearest";
+            const body = `My Most Esteemed Gentleman,
+
+Well, if thou dost insist with such fervour and devotion, I find myself most inclined to accept thy gracious invitation.
+
+However, I must impress upon thee one matter of utmost importance: Pray, do make certain to fetch some flowers ere thou presentest thyself at my doorstep. It would be most unseemly for a gentleman of thy station to arrive empty-handed when calling upon a lady.
+
+I shall expect a most splendid bouquet - perhaps roses, or peonies, or whatever blooms thou deemest worthy of this occasion.
+
+I await thy arrival with appropriate anticipation.
+
+Yours most cordially,
+
+The Lady Who Finally Said Yes
+
+P.S. - Do not disappoint me in this matter of the flowers, good sir. A lady has her expectations!`;
+
+            // Create mailto link
+            const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+        }
+
         yesBtn.addEventListener('click', function(e) {
             createSparkles(e.clientX, e.clientY);
             questionBox.style.display = 'none';
@@ -498,6 +523,11 @@
                     );
                 }, i * 100);
             }
+            
+            // Send email after showing the letter
+            setTimeout(() => {
+                sendEmail();
+            }, 1500);
         });
 
         noBtn.addEventListener('click', function(e) {
@@ -611,6 +641,11 @@
                                 );
                             }, i * 100);
                         }
+                        
+                        // Send email after showing the letter
+                        setTimeout(() => {
+                            sendEmail();
+                        }, 1500);
                     };
                 }, 100);
             }
